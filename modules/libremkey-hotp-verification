@@ -16,10 +16,12 @@ libremkey-hotp-verification_output := \
 	libremkey_hotp_verification \
 	libremkey_hotp_initialize
 
+FLAGS=-fdebug-prefix-map=$PWD=heads -gno-record-gcc-switches -DNDEBUG -fno-guess-branch-probability -Wdate-time -frandom-seed=device.c -O0
+
 libremkey-hotp-verification_configure := \
   INSTALL="$(INSTALL)" \
   CROSS="$(CROSS)" \
-  cmake -DCMAKE_C_FLAGS="-fdebug-prefix-map=$PWD=heads -gno-record-gcc-switches" -DADD_GIT_INFO=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=./Toolchain-heads.cmake -DCMAKE_AR="$(CROSS)ar" .
+  cmake -DCMAKE_C_FLAGS_RELEASE="$(FLAGS)" -DCMAKE_C_FLAGS="$(FLAGS)" -DCMAKE_EXE_LINKER_FLAGS="-O0" -DADD_GIT_INFO=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=./Toolchain-heads.cmake -DCMAKE_AR="$(CROSS)ar" .
 
 libremkey-hotp-verification_depends  += hidapi
 modules-y += hidapi
