@@ -2,11 +2,11 @@ modules-$(CONFIG_LIBREMKEY) += libremkey-hotp-verification
 
 libremkey-hotp-verification_depends := libusb $(musl_dep)
 
-libremkey-hotp-verification_version := 15f312d32684b85d0e9928c5238c90c63835f7af
+libremkey-hotp-verification_version := 1b9b13253831a707ec1161a7124cd560bf0ed681
 libremkey-hotp-verification_dir := libremkey-hotp-verification-$(libremkey-hotp-verification_version)
 libremkey-hotp-verification_tar := nitrokey-hotp-verification-$(libremkey-hotp-verification_version).tar.gz
 libremkey-hotp-verification_url := https://github.com/Nitrokey/nitrokey-hotp-verification/archive/$(libremkey-hotp-verification_version).tar.gz
-libremkey-hotp-verification_hash := d60c2a6f703424a426caa62ada9d9173c9f03d2a60277ff4b98e1e536d1b88d3
+libremkey-hotp-verification_hash := 74be70c98dc1dcbe47516229ce9d6eb6dceff55b147d66ec4fa5829e6b330db1
 
 libremkey-hotp-verification_target := \
 	$(MAKE_JOBS) \
