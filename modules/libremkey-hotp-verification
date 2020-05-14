@@ -2,11 +2,11 @@ modules-$(CONFIG_LIBREMKEY) += libremkey-hotp-verification
 
 libremkey-hotp-verification_depends := libusb $(musl_dep)
 
-libremkey-hotp-verification_version := d4948fddd617022635129f9b00db3f98de01016f
+libremkey-hotp-verification_version := 15f312d32684b85d0e9928c5238c90c63835f7af
 libremkey-hotp-verification_dir := libremkey-hotp-verification-$(libremkey-hotp-verification_version)
 libremkey-hotp-verification_tar := nitrokey-hotp-verification-$(libremkey-hotp-verification_version).tar.gz
 libremkey-hotp-verification_url := https://github.com/Nitrokey/nitrokey-hotp-verification/archive/$(libremkey-hotp-verification_version).tar.gz
-libremkey-hotp-verification_hash := 36125fc7986afdfc309e963f767fe8f10de109da022d222b0bd9ac26bf18eb52
+libremkey-hotp-verification_hash := d60c2a6f703424a426caa62ada9d9173c9f03d2a60277ff4b98e1e536d1b88d3
 
 libremkey-hotp-verification_target := \
 	$(MAKE_JOBS) \
@@ -21,7 +21,7 @@ FLAGS=-fdebug-prefix-map=$PWD=heads -gno-record-gcc-switches -DNDEBUG -fno-guess
 libremkey-hotp-verification_configure := \
   INSTALL="$(INSTALL)" \
   CROSS="$(CROSS)" \
-  cmake -DADD_FLAGS="$(FLAGS)" -DADD_GIT_INFO=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=./Toolchain-heads.cmake .
+  make
 
 libremkey-hotp-verification_depends  += hidapi
 modules-y += hidapi
