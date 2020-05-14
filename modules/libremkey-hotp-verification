@@ -21,7 +21,7 @@ FLAGS=-fdebug-prefix-map=$PWD=heads -gno-record-gcc-switches -DNDEBUG -fno-guess
 libremkey-hotp-verification_configure := \
   INSTALL="$(INSTALL)" \
   CROSS="$(CROSS)" \
-  make
+  $(CROSS_TOOLS) $(MAKE) && cp libremkey_hotp_verification $(INSTALL)
 
 libremkey-hotp-verification_depends  += hidapi
 modules-y += hidapi
