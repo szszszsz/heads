@@ -2,11 +2,11 @@ modules-$(CONFIG_LIBREMKEY) += libremkey-hotp-verification
 
 libremkey-hotp-verification_depends := libusb $(musl_dep)
 
-libremkey-hotp-verification_version := 1b9b13253831a707ec1161a7124cd560bf0ed681
+libremkey-hotp-verification_version := 6a5c1d912509ee3c7194c7b25dd7efa734b9873d
 libremkey-hotp-verification_dir := libremkey-hotp-verification-$(libremkey-hotp-verification_version)
 libremkey-hotp-verification_tar := nitrokey-hotp-verification-$(libremkey-hotp-verification_version).tar.gz
 libremkey-hotp-verification_url := https://github.com/Nitrokey/nitrokey-hotp-verification/archive/$(libremkey-hotp-verification_version).tar.gz
-libremkey-hotp-verification_hash := 74be70c98dc1dcbe47516229ce9d6eb6dceff55b147d66ec4fa5829e6b330db1
+libremkey-hotp-verification_hash := 686c5ac1dddc33c6f628b5a9b653243506e7a9aa49faa8959b6bd8f7b8c6e43e
 
 libremkey-hotp-verification_target := \
 	$(MAKE_JOBS) \
@@ -16,12 +16,12 @@ libremkey-hotp-verification_output := \
 	libremkey_hotp_verification \
 	libremkey_hotp_initialize
 
-FLAGS=-fdebug-prefix-map=$PWD=heads -gno-record-gcc-switches -DNDEBUG -fno-guess-branch-probability -Wdate-time -frandom-seed=0x42 -O0
+# FLAGS=-fdebug-prefix-map=$PWD=heads -gno-record-gcc-switches -DNDEBUG -fno-guess-branch-probability -Wdate-time -frandom-seed=0x42 -O0
 
 libremkey-hotp-verification_configure := \
   INSTALL="$(INSTALL)" \
   CROSS="$(CROSS)" \
-  make
+  meson build && cd build && ninja
 
 libremkey-hotp-verification_depends  += hidapi
 modules-y += hidapi
