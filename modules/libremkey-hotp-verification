@@ -21,7 +21,7 @@ FLAGS=-fdebug-prefix-map=$PWD=heads -gno-record-gcc-switches -DNDEBUG -fno-guess
 libremkey-hotp-verification_configure := \
   INSTALL="$(INSTALL)" \
   CROSS="$(CROSS)" \
-  $(CROSS_TOOLS) $(MAKE) && $(MAKE) install INSTALL="$(INSTALL)"
+  $(CROSS_TOOLS) $(MAKE) LDFLAGS="$(INSTALL)/lib/libusb-1.0.so" && $(MAKE) install INSTALL="$(INSTALL)"
 
 libremkey-hotp-verification_depends  += hidapi
 modules-y += hidapi
