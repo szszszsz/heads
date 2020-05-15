@@ -63,6 +63,11 @@ jobs:
           path: build/qemu-coreboot/hashes.txt
 
       - run:
+          name: clear old cache for libremkey-hotp-verification*
+          command: |
+            rm -rf build/libremkey-hotp-verification* -v
+
+      - run:
           name: x230-hotp_verification
           command: |
             make --load 2 \
